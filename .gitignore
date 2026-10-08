@@ -1,0 +1,11 @@
+# Mac 专用 / 临时文件
+.venv/
+__pycache__/
+*.pyc
+.DS_Store
+.pytest_cache/
+*.egg-info/
+
+# 运行输出（每次重新生成）
+ppt-sync/work/
+work/renders/

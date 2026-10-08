@@ -1,0 +1,44 @@
+# ppt-sync 配置文件
+# 所有阈值、权重均可在此调整；改后无需改代码。
+
+# ---------- 特征抽取 ----------
+extract:
+  # 数字后缀/单位表（用于数字+上下文抽取）
+  number_units: ["%", "亿", "万", "千", "家", "个", "人", "元", "单", "项", "份", "家+", "+家", "+", "年", "月", "季"]
+  # 通用页（封面/目录/致谢）标题关键词
+  boilerplate_keywords: ["目录", "封面", "致谢", "谢谢", "感谢", "Thank", "CONTENTS", "Contents", "Agenda", "agenda"]
+  # 全局去噪：图片哈希 / 文本 token 出现于超过该比例的页面时视为模板噪声
+  denoise_ratio: 0.30
+
+# ---------- 打分 ----------
+match:
+  weights:
+    s_img: 0.30
+    s_chart: 0.20
+    s_text: 0.25
+    s_layout: 0.10
+    s_visual: 0.15   # 无渲染兜底时自动按比例摊给其余项
+  candidate_threshold: 0.55   # 进入候选
+  high_confidence_threshold: 0.75
+  group_cohesion_min: 0.45    # 组内任意两页最低分，低于则拆组
+  same_deck_report: true      # 同文件内配对单独标注
+  visual_prescreen: 0.80      # CLIP 余弦高于此值的对绕过文本/图片预筛
+
+# ---------- 方向2：渲染兜底 ----------
+render_visual:
+  soffice_path: ""            # 留空自动探测（PATH / macOS 应用目录 / Windows 常见路径）
+  png_width: 640              # 渲染 PNG 宽度（px）
+
+# ---------- 方向3：CV 模型（CLIP） ----------
+visual:
+  model_dir: ""               # 留空用 ppt-sync/models/ 下的 ONNX 模型
+
+# ---------- 报告 ----------
+report:
+  inconsistency_context_jaccard: 0.5   # 数字配对：上下文 Jaccard 阈值
+
+# ---------- 打标 / 更新 ----------
+tag:
+  page_tag_prefix: "ppt-sync:"   # 写入 slide.name 的前缀
+render:
+  keep_unknown_keys: false       # 数据源有但 PPT 无标签的 key：false=仅记录日志

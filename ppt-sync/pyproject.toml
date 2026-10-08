@@ -1,0 +1,28 @@
+[project]
+name = "ppt-sync"
+version = "0.1.0"
+description = "PPT 同类页匹配与数据自动更新工具"
+requires-python = ">=3.10"
+dependencies = [
+    "python-pptx>=1.0",
+    "lxml",
+    "Pillow",
+    "imagehash",
+    "rapidfuzz",
+    "pandas",
+    "openpyxl",
+    "xlsxwriter",
+    "PyYAML",
+    "PyMuPDF",       # 方向2：PDF 按页转 PNG
+    "onnxruntime",   # 方向3：CLIP 视觉编码器推理
+    "numpy",
+]
+
+[project.optional-dependencies]
+dev = ["pytest", "pyarrow"]
+
+[tool.setuptools]
+packages = ["ppt_sync"]
+
+[project.scripts]
+ppt-sync = "ppt_sync.cli:main"
