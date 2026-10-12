@@ -8,4 +8,9 @@ __pycache__/
 
 # 运行输出（每次重新生成）
 ppt-sync/work/
-work/renders/
+work/
+
+# 样例 PPT 本体含业务内容，不入仓（目录结构用 .gitkeep 保留）
+样例PPT/*.pptx
+样例PPT/*.ppt
+样例PPT/*.pdf

@@ -7,6 +7,10 @@ extract:
   number_units: ["%", "亿", "万", "千", "家", "个", "人", "元", "单", "项", "份", "家+", "+家", "+", "年", "月", "季"]
   # 通用页（封面/目录/致谢）标题关键词
   boilerplate_keywords: ["目录", "封面", "致谢", "谢谢", "感谢", "Thank", "CONTENTS", "Contents", "Agenda", "agenda"]
+  # 模板占位符文本（页面过半段落命中则视为模板占位页，不参与匹配）
+  placeholder_keywords: ["单击此处添加", "单击此处输入", "点击此处添加", "在此输入", "在此键入", "输入标题", "添加标题", "添加文本", "请输入您", "输入您的内容", "lorem ipsum", "add your text", "text here", "click to add", "sample text"]
+  # 模板站点水印/版权标记（页面文字几乎全是这些时视为模板页，不参与匹配）
+  credit_keywords: ["1ppt", "第一ppt", "ibaotu", "千图网", "摄图网", "稻壳", "觅元素", "90设计", "docin", "slidesgo", "freepik", "template.net"]
   # 全局去噪：图片哈希 / 文本 token 出现于超过该比例的页面时视为模板噪声
   denoise_ratio: 0.30
 
